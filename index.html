@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ankita Choudhary — Product Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#17121F;
+    --bg2:#1E1729;
+    --card:rgba(255,255,255,0.045);
+    --card-border:rgba(255,255,255,0.09);
+    --violet:#9B7BFF;
+    --violet-deep:#6C4AE2;
+    --gold:#FFC24B;
+    --text:#EDE9F6;
+    --muted:#9A93AC;
+    --radius:18px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Sora',sans-serif;
+    font-weight:300;
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--violet-deep);color:#fff}
+  a{color:var(--violet)}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+
+  /* ambient orbs */
+  .orb{position:fixed;border-radius:50%;filter:blur(120px);opacity:.35;pointer-events:none;z-index:0}
+  .orb1{width:520px;height:520px;background:#4A2FA8;top:-160px;right:-120px}
+  .orb2{width:420px;height:420px;background:#8A4B1F;bottom:-180px;left:-140px;opacity:.22}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+
+  /* nav */
+  nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(14px);
+    background:rgba(23,18,31,0.75);
+    border-bottom:1px solid var(--card-border);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1080px;margin:0 auto}
+  .logo{font-family:'Fraunces',serif;font-weight:700;font-size:1.15rem;color:var(--text);text-decoration:none}
+  .logo span{color:var(--gold)}
+  .nav-links{display:flex;gap:26px;list-style:none}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:400;transition:color .2s}
+  .nav-links a:hover{color:var(--text)}
+  @media(max-width:720px){.nav-links{display:none}}
+
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--gold);font-weight:500;
+  }
+
+  /* hero */
+  header{padding:110px 0 90px;text-align:left}
+  h1{
+    font-family:'Fraunces',serif;font-weight:600;
+    font-size:clamp(2.4rem,5.6vw,4.2rem);
+    line-height:1.08;margin:20px 0 26px;letter-spacing:-.01em;
+  }
+  h1 em{font-style:italic;color:var(--violet)}
+  .hero-sub{max-width:620px;color:var(--muted);font-size:1.05rem;margin-bottom:38px}
+  .hero-sub strong{color:var(--text);font-weight:500}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    display:inline-block;padding:13px 26px;border-radius:999px;text-decoration:none;
+    font-weight:500;font-size:.92rem;transition:transform .18s,box-shadow .18s;
+  }
+  .btn-primary{background:linear-gradient(120deg,var(--violet-deep),var(--violet));color:#fff;box-shadow:0 6px 26px rgba(108,74,226,.4)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(108,74,226,.55)}
+  .btn-ghost{border:1px solid var(--card-border);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--violet);transform:translateY(-2px)}
+
+  /* stat strip */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:0 0 100px}
+  @media(max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat{
+    background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);
+    padding:22px 20px;
+  }
+  .stat b{font-family:'Fraunces',serif;font-size:1.9rem;font-weight:600;display:block;color:var(--text)}
+  .stat span{font-size:.78rem;color:var(--muted)}
+
+  section{padding:0 0 110px}
+  h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.7rem,3.4vw,2.4rem);margin:14px 0 14px;letter-spacing:-.01em}
+  .section-intro{color:var(--muted);max-width:640px;margin-bottom:44px}
+
+  /* skills */
+  .skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media(max-width:720px){.skill-grid{grid-template-columns:1fr}}
+  .skill-card{
+    background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);
+    padding:26px;transition:transform .2s,border-color .2s;
+  }
+  .skill-card:hover{transform:translateY(-4px);border-color:rgba(155,123,255,.45)}
+  .skill-card h3{font-family:'Sora',sans-serif;font-weight:600;font-size:1rem;margin:10px 0 8px}
+  .skill-card p{color:var(--muted);font-size:.88rem}
+  .chiprow{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .chip{
+    font-family:'JetBrains Mono',monospace;font-size:.68rem;padding:5px 11px;border-radius:999px;
+    border:1px solid var(--card-border);color:var(--text);background:rgba(255,255,255,.03)
+  }
+  .glyph{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,rgba(108,74,226,.35),rgba(255,194,75,.18));font-size:1.05rem}
+
+  /* RICE sandbox */
+  .sandbox{
+    background:linear-gradient(160deg,rgba(108,74,226,.14),rgba(255,255,255,.03));
+    border:1px solid rgba(155,123,255,.3);border-radius:24px;padding:36px;
+  }
+  @media(max-width:720px){.sandbox{padding:24px}}
+  .sandbox-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:36px;align-items:start}
+  @media(max-width:860px){.sandbox-grid{grid-template-columns:1fr}}
+  .slider-row{margin-bottom:22px}
+  .slider-row label{display:flex;justify-content:space-between;font-size:.85rem;font-weight:500;margin-bottom:8px}
+  .slider-row label output{font-family:'JetBrains Mono',monospace;color:var(--gold)}
+  input[type=range]{
+    width:100%;-webkit-appearance:none;appearance:none;height:5px;border-radius:99px;
+    background:rgba(255,255,255,.12);outline:none;
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:50%;
+    background:var(--violet);border:3px solid #fff;cursor:pointer;box-shadow:0 2px 10px rgba(108,74,226,.6)
+  }
+  input[type=range]::-moz-range-thumb{
+    width:14px;height:14px;border-radius:50%;background:var(--violet);border:3px solid #fff;cursor:pointer
+  }
+  .rice-score{
+    text-align:center;background:rgba(23,18,31,.6);border:1px solid var(--card-border);
+    border-radius:18px;padding:26px;margin-bottom:20px;
+  }
+  .rice-score b{font-family:'Fraunces',serif;font-size:3.4rem;font-weight:700;color:var(--gold);display:block;line-height:1}
+  .rice-score span{font-size:.75rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;font-family:'JetBrains Mono',monospace}
+  .verdict{font-size:.9rem;margin-top:10px;color:var(--text)}
+  table{width:100%;border-collapse:collapse;font-size:.82rem}
+  th{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px;border-bottom:1px solid var(--card-border)}
+  td{padding:9px 10px;border-bottom:1px solid rgba(255,255,255,.05)}
+  tr.you td{color:var(--gold);font-weight:500}
+  .score-cell{font-family:'JetBrains Mono',monospace}
+
+  /* roadmap */
+  .roadmap{position:relative;margin-top:8px}
+  .roadmap::before{
+    content:"";position:absolute;left:11px;top:6px;bottom:6px;width:2px;
+    background:linear-gradient(var(--violet-deep),var(--gold));border-radius:2px;
+  }
+  .release{position:relative;padding:0 0 40px 48px}
+  .release:last-child{padding-bottom:0}
+  .release::before{
+    content:"";position:absolute;left:3px;top:6px;width:18px;height:18px;border-radius:50%;
+    background:var(--bg);border:3px solid var(--violet);
+  }
+  .release.current::before{border-color:var(--gold);box-shadow:0 0 0 6px rgba(255,194,75,.15)}
+  .vtag{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--gold);letter-spacing:.1em}
+  .release h3{font-family:'Sora',sans-serif;font-weight:600;font-size:1.05rem;margin:4px 0 2px}
+  .release .org{font-size:.82rem;color:var(--violet);margin-bottom:8px}
+  .release p{color:var(--muted);font-size:.88rem;max-width:640px}
+  .release ul{margin:10px 0 0 18px;color:var(--muted);font-size:.88rem}
+  .release li{margin-bottom:5px}
+  .release li b{color:var(--text);font-weight:500}
+
+  /* airtribe callout */
+  .callout{
+    display:flex;gap:22px;align-items:flex-start;
+    background:linear-gradient(120deg,rgba(255,194,75,.1),rgba(108,74,226,.12));
+    border:1px solid rgba(255,194,75,.3);border-radius:var(--radius);padding:28px;
+  }
+  .callout .glyph{flex-shrink:0;width:46px;height:46px;font-size:1.3rem}
+  .callout h3{font-weight:600;font-size:1.05rem;margin-bottom:6px}
+  .callout p{color:var(--muted);font-size:.9rem}
+
+  /* contact */
+  .contact-card{
+    text-align:center;background:var(--card);border:1px solid var(--card-border);
+    border-radius:24px;padding:60px 30px;
+  }
+  .contact-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+  footer{padding:34px 0 44px;text-align:center;color:var(--muted);font-size:.78rem}
+  footer .heart{color:var(--gold)}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<div class="orb orb1" aria-hidden="true"></div>
+<div class="orb orb2" aria-hidden="true"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#top">ankita<span>.pm</span></a>
+    <ul class="nav-links">
+      <li><a href="#how">How I work</a></li>
+      <li><a href="#sandbox">RICE sandbox</a></li>
+      <li><a href="#roadmap">Career roadmap</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
+
+  <header>
+    <p class="eyebrow">Product Manager · Bidar, Karnataka, IN</p>
+    <h1>Products ship when someone owns <em>the whole story.</em></h1>
+    <p class="hero-sub">
+      I'm <strong>Ankita Choudhary</strong> — a product manager who has been the product owner, the analyst,
+      the QA lead, the support desk, and the teacher explaining it all in plain words.
+      In young companies, I've learned that <strong>versatility isn't a detour from product — it is product.</strong>
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#sandbox">Try my RICE sandbox</a>
+      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+    </div>
+  </header>
+
+  <div class="stats reveal">
+    <div class="stat"><b>7+</b><span>years of professional experience</span></div>
+    <div class="stat"><b>5</b><span>hats worn at one startup — PO, QA, scrum, support, marketing</span></div>
+    <div class="stat"><b>2</b><span>remote-first product & business roles</span></div>
+    <div class="stat"><b>1</b><span>PM program in progress · AirTribe</span></div>
+  </div>
+
+  <section id="how" class="reveal">
+    <p class="eyebrow">How I work</p>
+    <h2>Four muscles, one job.</h2>
+    <p class="section-intro">Everything I've done — classrooms, data desks, sprint boards — feeds one of these four muscles a PM needs every day.</p>
+    <div class="skill-grid">
+      <div class="skill-card">
+        <div class="glyph">🔍</div>
+        <h3>Discover</h3>
+        <p>Talking to users, reading the market, and turning fuzzy needs into problems worth solving.</p>
+        <div class="chiprow"><span class="chip">User research</span><span class="chip">Competitive analysis</span><span class="chip">Requirements gathering</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="glyph">🧭</div>
+        <h3>Decide</h3>
+        <p>Vision, roadmap, and a ruthlessly prioritized backlog — items estimated, refined, and ready.</p>
+        <div class="chiprow"><span class="chip">Roadmapping</span><span class="chip">Backlog prioritization</span><span class="chip">User stories & AC</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="glyph">🚀</div>
+        <h3>Deliver</h3>
+        <p>Sprint planning, demos, and accepting work against acceptance criteria so quality never slips.</p>
+        <div class="chiprow"><span class="chip">Agile & Scrum</span><span class="chip">Sprint planning</span><span class="chip">QA coordination</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="glyph">📊</div>
+        <h3>Measure</h3>
+        <p>An analyst's habit of letting the data argue — metrics, user analytics, and honest reporting to leadership.</p>
+        <div class="chiprow"><span class="chip">Data analysis</span><span class="chip">Metrics & reporting</span><span class="chip">Stakeholder comms</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sandbox" class="reveal">
+    <p class="eyebrow">Interactive · The signature</p>
+    <h2>The RICE prioritization sandbox.</h2>
+    <p class="section-intro">Prioritization is the PM's sharpest knife. Move the sliders to score a feature the way I score a backlog — then see where it lands against a sample backlog.</p>
+    <div class="sandbox">
+      <div class="sandbox-grid">
+        <div>
+          <div class="slider-row">
+            <label for="reach">Reach <small style="color:var(--muted);font-weight:300">(users / quarter)</small> <output id="reachOut">2000</output></label>
+            <input type="range" id="reach" min="100" max="10000" step="100" value="2000">
+          </div>
+          <div class="slider-row">
+            <label for="impact">Impact <small style="color:var(--muted);font-weight:300">(0.25 – 3)</small> <output id="impactOut">1.0</output></label>
+            <input type="range" id="impact" min="0.25" max="3" step="0.25" value="1">
+          </div>
+          <div class="slider-row">
+            <label for="conf">Confidence <small style="color:var(--muted);font-weight:300">(%)</small> <output id="confOut">80%</output></label>
+            <input type="range" id="conf" min="10" max="100" step="5" value="80">
+          </div>
+          <div class="slider-row">
+            <label for="effort">Effort <small style="color:var(--muted);font-weight:300">(person-months)</small> <output id="effortOut">2</output></label>
+            <input type="range" id="effort" min="0.5" max="12" step="0.5" value="2">
+          </div>
+        </div>
+        <div>
+          <div class="rice-score">
+            <span>RICE score</span>
+            <b id="score">800</b>
+            <p class="verdict" id="verdict">Solid bet — schedule it in the next sprint or two.</p>
+          </div>
+          <table aria-label="Sample backlog ranked by RICE score">
+            <thead><tr><th>Backlog item</th><th>RICE</th></tr></thead>
+            <tbody id="backlog"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="roadmap" class="reveal">
+    <p class="eyebrow">Career roadmap</p>
+    <h2>Shipped in versions.</h2>
+    <p class="section-intro">Every release added a capability the next one needed. The changelog, in order:</p>
+    <div class="roadmap">
+      <div class="release">
+        <span class="vtag">v1.0 — EDUCATOR · ~3.3 YRS</span>
+        <h3>Teacher</h3>
+        <p class="org">St. Paul's Sr. Sec. School, Barmer &amp; Lucky Bal Niketan, Jodhpur</p>
+        <ul>
+          <li><b>Authored a Grammar Book for Classes 1–5</b>, adopted as course material — my first shipped product.</li>
+          <li>Students from my curriculum <b>topped the district in CBSE boards</b>.</li>
+          <li>Moved entire classrooms online during COVID — my first zero-to-one migration.</li>
+        </ul>
+      </div>
+      <div class="release">
+        <span class="vtag">v2.0 — COORDINATOR · 2.6 YRS</span>
+        <h3>Accounts Manager | Academic Coordinator</h3>
+        <p class="org">Neerja Modi School, Jodhpur</p>
+        <ul>
+          <li>Ran school-wide events end to end — <b>stakeholder management before I knew the term</b>.</li>
+          <li>Caught and resolved discrepancies under hard deadlines.</li>
+        </ul>
+      </div>
+      <div class="release">
+        <span class="vtag">v3.0 — ANALYST · 6 MO</span>
+        <h3>Data Analyst</h3>
+        <p class="org">CMIE, Jodhpur</p>
+        <ul>
+          <li>Extracted and interpreted data patterns into <b>actionable outcomes</b> for the Roadways Department.</li>
+          <li>Partnered with business-unit leaders to identify and prioritize problems.</li>
+        </ul>
+      </div>
+      <div class="release">
+        <span class="vtag">v4.0 — PRODUCT OWNER · 11 MO</span>
+        <h3>Product Owner</h3>
+        <p class="org">Tongadive · Remote</p>
+        <ul>
+          <li>Owned <b>vision, strategy, and roadmap</b>; translated stakeholder needs into user stories with clear acceptance criteria.</li>
+          <li>Ran sprint planning and demos; <b>accepted or rejected work against acceptance criteria</b>.</li>
+          <li>Also led QA, scrum, customer support &amp; marketing; represented the company at <b>CPHI</b> and on customer site visits.</li>
+        </ul>
+      </div>
+      <div class="release">
+        <span class="vtag">v5.0 — BUSINESS MANAGER · JUN 2024 – MAY 2025</span>
+        <h3>Business Manager</h3>
+        <p class="org">Demenew · Remote</p>
+        <ul>
+          <li>Led cross-functional teams to <b>quarterly business goals</b>; tracked metrics and presented insights to leadership.</li>
+          <li>Improved client retention through personalized service and effective escalation handling.</li>
+        </ul>
+      </div>
+      <div class="release current">
+        <span class="vtag">v6.0 — IN DEVELOPMENT · MAY 2026 →</span>
+        <h3>Product Manager</h3>
+        <p class="org">AirTribe Product Management Program</p>
+        <p>Sharpening the craft with hands-on product projects. Expected release: <b style="color:var(--gold)">Nov 2026</b>. Roadmap item: your product team.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="callout">
+      <div class="glyph">🎓</div>
+      <div>
+        <h3>Currently levelling up — AirTribe PM Program</h3>
+        <p>May 2026 – present. Multiple hands-on product projects completed, from discovery to delivery frameworks. Also certified in effective online teaching techniques, and a volunteer for girl-child education with Pumpkin Seeds.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="reveal">
+    <div class="contact-card">
+      <p class="eyebrow">Contact</p>
+      <h2>Let's build something users love.</h2>
+      <p class="section-intro" style="margin:0 auto">Open to Product Manager and Product Owner roles — remote or hybrid.</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:ankitaroo@gmail.com">ankitaroo@gmail.com</a>
+        <a class="btn btn-ghost" href="tel:+919602339707">+91 96023 39707</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Designed as a product: discovered, prioritized, shipped. <span class="heart">◆</span> Ankita Choudhary · 2026
+  </footer>
+</div>
+
+<script>
+  // RICE calculator
+  const reach = document.getElementById('reach');
+  const impact = document.getElementById('impact');
+  const conf = document.getElementById('conf');
+  const effort = document.getElementById('effort');
+  const scoreEl = document.getElementById('score');
+  const verdictEl = document.getElementById('verdict');
+  const backlogEl = document.getElementById('backlog');
+
+  const samples = [
+    {name:'Fix checkout drop-off on mobile', score:1450},
+    {name:'Self-serve onboarding flow', score:920},
+    {name:'Dark mode', score:310},
+    {name:'Export to CSV', score:180},
+    {name:'Rebuild settings page', score:95},
+  ];
+
+  function verdict(s){
+    if (s >= 1200) return 'Drop everything — this is a top-of-backlog item.';
+    if (s >= 600)  return 'Solid bet — schedule it in the next sprint or two.';
+    if (s >= 200)  return 'Worth doing, but not before the big rocks.';
+    return 'Park it. Revisit when reach or confidence grows.';
+  }
+
+  function render(){
+    const r = +reach.value, i = +impact.value, c = +conf.value/100, e = +effort.value;
+    const s = Math.round((r * i * c) / e);
+    document.getElementById('reachOut').textContent = r.toLocaleString();
+    document.getElementById('impactOut').textContent = i.toFixed(2).replace(/\.?0+$/,'') ;
+    document.getElementById('confOut').textContent = conf.value + '%';
+    document.getElementById('effortOut').textContent = e;
+    scoreEl.textContent = s.toLocaleString();
+    verdictEl.textContent = verdict(s);
+
+    const rows = [...samples, {name:'✦ Your feature', score:s, you:true}]
+      .sort((a,b)=>b.score-a.score)
+      .map(x=>`<tr${x.you?' class="you"':''}><td>${x.name}</td><td class="score-cell">${x.score.toLocaleString()}</td></tr>`)
+      .join('');
+    backlogEl.innerHTML = rows;
+  }
+  [reach,impact,conf,effort].forEach(el=>el.addEventListener('input',render));
+  render();
+
+  // scroll reveals
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
+  },{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
