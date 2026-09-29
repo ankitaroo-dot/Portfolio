@@ -243,6 +243,16 @@
     color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(255,194,75,.4);padding-bottom:2px;
   }
   .case-live:hover{color:#fff}
+  .cta-links{display:flex;flex-wrap:wrap;gap:22px}
+  @media(max-width:640px){
+    .case summary{display:grid;grid-template-columns:1fr auto;gap:12px;padding:20px}
+    .case-tag{justify-self:start}
+    .case-head{grid-column:1 / -1;grid-row:2}
+    .case-body{padding:0 20px 24px}
+  }
+  .edu-list{list-style:none;margin-top:10px}
+  .edu-list li{color:var(--muted);font-size:.88rem;margin-bottom:4px}
+  .edu-list b{color:var(--text);font-weight:500}
 </style>
 </head>
 <body>
@@ -265,7 +275,7 @@
 <div class="wrap" id="top">
 
   <header>
-    <p class="eyebrow">Product Manager · Bidar, Karnataka, IN</p>
+    <p class="eyebrow">Associate Product Manager · Product Owner · Bidar, Karnataka, IN</p>
     <h1>Products ship when someone owns <em>the whole story.</em></h1>
     <p class="hero-sub">
       I'm <strong>Ankita Choudhary</strong> — a product manager who has been the product owner, the analyst,
@@ -273,15 +283,16 @@
       In young companies, I've learned that <strong>versatility isn't a detour from product — it is product.</strong>
     </p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="#sandbox">Try my RICE sandbox</a>
-      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+      <a class="btn btn-primary" href="#projects">See my projects</a>
+      <a class="btn btn-ghost" href="docs/Ankita_Choudhary_Resume.pdf" target="_blank" rel="noopener">Download resume</a>
+      <a class="btn btn-ghost" href="#sandbox">Try my RICE sandbox</a>
     </div>
   </header>
 
   <div class="stats reveal">
     <div class="stat"><b>7+</b><span>years of professional experience</span></div>
     <div class="stat"><b>5</b><span>hats worn at one startup — PO, QA, scrum, support, marketing</span></div>
-    <div class="stat"><b>2</b><span>remote-first product & business roles</span></div>
+    <div class="stat"><b>2</b><span>live products shipped · OutLoud &amp; Our House Ledger</span></div>
     <div class="stat"><b>1</b><span>PM program in progress · AirTribe</span></div>
   </div>
 
@@ -319,12 +330,172 @@
 
   <section id="projects" class="reveal">
     <p class="eyebrow">Projects</p>
-    <h2>Five problems, five artifacts.</h2>
-    <p class="section-intro">Case studies from AirTribe's Product Management program, plus one shipped product. Tap any card to open the full write-up.</p>
+    <h2>Nine problems, nine artifacts.</h2>
+    <p class="section-intro">Two shipped products and seven case studies from AirTribe's Product Management program. Tap any card to open the summary, or read the full write-up.</p>
 
     <div class="case-grid">
 
       <details class="case" open>
+        <summary>
+          <span class="case-tag">Shipped · Capstone</span>
+          <span class="case-head">
+            <h3>OutLoud — AI English-Speaking Practice</h3>
+            <p>Five minutes of speaking practice on your phone, with nobody listening but you</p>
+          </span>
+          <span class="case-plus" aria-hidden="true"></span>
+        </summary>
+        <div class="case-body">
+          <div class="case-divider"></div>
+          <div class="case-cols">
+            <div class="case-block">
+              <b>Problem</b>
+              <p>College students who read and write English fluently freeze when they have to speak it in presentations, vivas and interviews. Every place to practise has a person in it who might judge them, so they script, skip hard words, get caught, and withdraw.</p>
+            </div>
+            <div class="case-block">
+              <b>Research</b>
+              <p>6 user interviews (5 in segment) and a day-0 baseline: comfort speaking to a stranger averaged <strong style="color:var(--text);font-weight:500">1.6 / 5</strong>. Key insight: the fear is of the witness, not the language. Nobody asked for better teaching; they asked for privacy.</p>
+            </div>
+          </div>
+          <div class="case-cols">
+            <div class="case-block">
+              <b>What I built</b>
+              <p>A 5-step loop: prompt card → 15s to think → 60s unscripted speech → AI coaching (one strength, one suggestion, one rewrite) → unlimited retakes that leave no trace. No score, no login, no audience.</p>
+            </div>
+            <div class="case-block">
+              <b>Hardest trade-off</b>
+              <p>Showing no score at all. It protects nervous users, but removes the most legible form of progress. v2 plans an opt-in score unlocked after session three.</p>
+            </div>
+          </div>
+          <div class="case-block" style="margin-bottom:16px">
+            <b>Early signals</b>
+            <div class="case-metrics">
+              <span class="metric-pill">Market leader: 70% monthly paid churn</span>
+              <span class="metric-pill">71% opened a cold link</span>
+              <span class="metric-pill">1 unprompted return session</span>
+              <span class="metric-pill">North Star: Week-4 practice completion</span>
+            </div>
+          </div>
+          <div class="cta-links">
+            <a class="case-live" href="https://instant-capture-show.lovable.app" target="_blank" rel="noopener">Try the live app →</a>
+            <a class="case-live" href="docs/OutLoud_Capstone.pdf" target="_blank" rel="noopener">Read the capstone deck (PDF) →</a>
+          </div>
+        </div>
+      </details>
+
+      <details class="case">
+        <summary>
+          <span class="case-tag">Growth strategy</span>
+          <span class="case-head">
+            <h3>Airbnb India — Growth Loops for a Low-Take-Rate Market</h3>
+            <p>PLG initiatives, growth loops, four MVP prototypes and a revenue model built for India</p>
+          </span>
+          <span class="case-plus" aria-hidden="true"></span>
+        </summary>
+        <div class="case-body">
+          <div class="case-divider"></div>
+          <div class="case-cols">
+            <div class="case-block">
+              <b>Diagnosis</b>
+              <p>Four constraints bind Airbnb India: <strong style="color:var(--text);font-weight:500">trust</strong> (listing ≠ reality), <strong style="color:var(--text);font-weight:500">frequency</strong> (1–2 trips a year), thin leaky <strong style="color:var(--text);font-weight:500">supply</strong>, and a 15.5% <strong style="color:var(--text);font-weight:500">take rate</strong> on a ₹4,000 room night. I audited what Airbnb already ships before proposing anything.</p>
+            </div>
+            <div class="case-block">
+              <b>Five moves</b>
+              <ul>
+                <li>Product-led ops (AI listing copilot, WhatsApp self-serve support)</li>
+                <li>Proof of Stay: verified guest photos in reviews</li>
+                <li>Trust Score with real benefits for good guests</li>
+                <li>Split &amp; Invite: group bookings settled over UPI</li>
+                <li>Monetise the trip, not the room night</li>
+              </ul>
+            </div>
+          </div>
+          <div class="case-block" style="margin-bottom:16px">
+            <b>Headline results</b>
+            <div class="case-metrics">
+              <span class="metric-pill">North Star: verified trips per active traveller per year</span>
+              <span class="metric-pill">Take rate 15.5% → 13%, contribution/booking +~10%</span>
+              <span class="metric-pill">4 MVPs in one clickable prototype</span>
+              <span class="metric-pill">RICE-ranked roadmap with kill criteria</span>
+            </div>
+          </div>
+          <a class="case-live" href="docs/Airbnb_India_Growth_Strategy.pdf" target="_blank" rel="noopener">Read the full strategy (PDF) →</a>
+        </div>
+      </details>
+
+      <details class="case">
+        <summary>
+          <span class="case-tag">Analytics</span>
+          <span class="case-head">
+            <h3>Zomato — Funnel, Cohort &amp; North Star Analysis</h3>
+            <p>Where Tier-1 users give up between opening the app and getting their food</p>
+          </span>
+          <span class="case-plus" aria-hidden="true"></span>
+        </summary>
+        <div class="case-body">
+          <div class="case-divider"></div>
+          <div class="case-cols">
+            <div class="case-block">
+              <b>Funnel finding</b>
+              <p>Of 1,000 app opens, 837 users are lost, and <strong style="color:var(--text);font-weight:500">700 leave in the first three steps</strong>, before they ever see a price. The real problem isn't checkout; it's a hungry user who can't decide what to eat.</p>
+            </div>
+            <div class="case-block">
+              <b>Cohort finding</b>
+              <p>Across 6 cohorts, discount-only users almost all leave within a year (11 of 100 remain vs 58 for full-price users), and new users drop fastest, so the first three orders matter most.</p>
+            </div>
+          </div>
+          <div class="case-block" style="margin-bottom:16px">
+            <b>Metrics &amp; plan</b>
+            <div class="case-metrics">
+              <span class="metric-pill">North Star: monthly repeat delivered orders</span>
+              <span class="metric-pill">Metric ladder for 13 hypotheses</span>
+              <span class="metric-pill">12-month plan: 170 → ~206 orders per 1,000 opens (+21%)</span>
+            </div>
+            <p style="color:var(--muted);font-size:.78rem;margin-top:10px">Figures are illustrative examples built to show the method, not real Zomato data.</p>
+          </div>
+          <a class="case-live" href="docs/Zomato_Funnel_Cohort_Analysis.pdf" target="_blank" rel="noopener">Read the full analysis (PDF) →</a>
+        </div>
+      </details>
+
+      <details class="case">
+        <summary>
+          <span class="case-tag">PRD · System design</span>
+          <span class="case-head">
+            <h3>PathFinder — Personalised Learning Recommendations</h3>
+            <p>Guide learners to the right course, at the right level, in the right order</p>
+          </span>
+          <span class="case-plus" aria-hidden="true"></span>
+        </summary>
+        <div class="case-body">
+          <div class="case-divider"></div>
+          <div class="case-cols">
+            <div class="case-block">
+              <b>Problem</b>
+              <p>Thousands of courses, but learners don't know which to pick, so they choose badly, get bored or stuck, and quit. The platform should guide them, not make them search.</p>
+            </div>
+            <div class="case-block">
+              <b>What the PRD covers</b>
+              <ul>
+                <li>User stories for learners, instructors and admins</li>
+                <li>10 prioritised functional requirements</li>
+                <li>Anti-cheat rewards system (points, weekly streaks, tiers)</li>
+                <li>Non-functional requirements and system architecture</li>
+              </ul>
+            </div>
+          </div>
+          <div class="case-block" style="margin-bottom:16px">
+            <b>Targets</b>
+            <div class="case-metrics">
+              <span class="metric-pill">Engagement +25%</span>
+              <span class="metric-pill">Course completions +30%</span>
+              <span class="metric-pill">Home feed &lt; 0.3s · 99.9% uptime</span>
+              <span class="metric-pill">GDPR &amp; DPDP compliant</span>
+            </div>
+          </div>
+          <a class="case-live" href="docs/PathFinder_PRD.pdf" target="_blank" rel="noopener">Read the full PRD (PDF) →</a>
+        </div>
+      </details>
+
+      <details class="case">
         <summary>
           <span class="case-tag">Shipped product</span>
           <span class="case-head">
@@ -538,9 +709,27 @@
     <p class="section-intro">Every release added a capability the next one needed. The changelog, in order:</p>
     <div class="roadmap">
       <div class="release">
-        <span class="vtag">v1.0 — EDUCATOR · ~3.3 YRS</span>
+        <span class="vtag">v1.0 — ANALYST · JUL 2015 – NOV 2015</span>
+        <h3>Data Analyst</h3>
+        <p class="org">Centre for Monitoring Indian Economy (CMIE), Jodhpur</p>
+        <ul>
+          <li>Extracted and interpreted data patterns into <b>actionable outcomes</b> for the Roadways Department.</li>
+          <li>Partnered with business-unit leaders to identify and prioritize problems.</li>
+        </ul>
+      </div>
+      <div class="release">
+        <span class="vtag">v2.0 — OPERATIONS · JUL 2016 – OCT 2018</span>
+        <h3>Account Manager | Administrative Office Specialist</h3>
+        <p class="org">Neerja Modi School, Jodhpur</p>
+        <ul>
+          <li>Ran school-wide events (Annual Day, Sports Day) end to end — <b>stakeholder management before I knew the term</b>.</li>
+          <li>Caught and resolved account discrepancies under hard deadlines; maintained the school's MIS records.</li>
+        </ul>
+      </div>
+      <div class="release">
+        <span class="vtag">v3.0 — EDUCATOR · JUL 2018 – JUL 2022</span>
         <h3>Teacher</h3>
-        <p class="org">St. Paul's Sr. Sec. School, Barmer &amp; Lucky Bal Niketan, Jodhpur</p>
+        <p class="org">Lucky Bal Niketan Sr. Sec. School, Jodhpur &amp; St. Paul's Sr. Sec. School, Barmer</p>
         <ul>
           <li><b>Authored a Grammar Book for Classes 1–5</b>, adopted as course material — my first shipped product.</li>
           <li>Students from my curriculum <b>topped the district in CBSE boards</b>.</li>
@@ -548,26 +737,8 @@
         </ul>
       </div>
       <div class="release">
-        <span class="vtag">v2.0 — COORDINATOR · 2.6 YRS</span>
-        <h3>Accounts Manager | Academic Coordinator</h3>
-        <p class="org">Neerja Modi School, Jodhpur</p>
-        <ul>
-          <li>Ran school-wide events end to end — <b>stakeholder management before I knew the term</b>.</li>
-          <li>Caught and resolved discrepancies under hard deadlines.</li>
-        </ul>
-      </div>
-      <div class="release">
-        <span class="vtag">v3.0 — ANALYST · 6 MO</span>
-        <h3>Data Analyst</h3>
-        <p class="org">CMIE, Jodhpur</p>
-        <ul>
-          <li>Extracted and interpreted data patterns into <b>actionable outcomes</b> for the Roadways Department.</li>
-          <li>Partnered with business-unit leaders to identify and prioritize problems.</li>
-        </ul>
-      </div>
-      <div class="release">
-        <span class="vtag">v4.0 — PRODUCT OWNER · 11 MO</span>
-        <h3>Product Owner</h3>
+        <span class="vtag">v4.0 — PRODUCT OWNER · SEP 2022 – AUG 2023</span>
+        <h3>Product Owner &amp; Product Consultant</h3>
         <p class="org">Tongadive · Remote</p>
         <ul>
           <li>Owned <b>vision, strategy, and roadmap</b>; translated stakeholder needs into user stories with clear acceptance criteria.</li>
@@ -578,7 +749,7 @@
       <div class="release">
         <span class="vtag">v5.0 — BUSINESS MANAGER · JUN 2024 – MAY 2025</span>
         <h3>Business Manager</h3>
-        <p class="org">Demenew · Remote</p>
+        <p class="org">DeMeNew Tech Pvt. Ltd. · Hyderabad (Remote)</p>
         <ul>
           <li>Led cross-functional teams to <b>quarterly business goals</b>; tracked metrics and presented insights to leadership.</li>
           <li>Improved client retention through personalized service and effective escalation handling.</li>
@@ -588,7 +759,7 @@
         <span class="vtag">v6.0 — IN DEVELOPMENT · MAY 2026 →</span>
         <h3>Product Manager</h3>
         <p class="org">AirTribe Product Management Program</p>
-        <p>Sharpening the craft with hands-on product projects. Expected release: <b style="color:var(--gold)">Nov 2026</b>. Roadmap item: your product team.</p>
+        <p>Nine product projects so far, including a shipped AI capstone. Expected release: <b style="color:var(--gold)">Nov 2026</b>. Roadmap item: your product team.</p>
       </div>
     </div>
   </section>
@@ -597,8 +768,14 @@
     <div class="callout">
       <div class="glyph">🎓</div>
       <div>
-        <h3>Currently levelling up — AirTribe PM Program</h3>
-        <p>May 2026 – present. Multiple hands-on product projects completed, from discovery to delivery frameworks. Also certified in effective online teaching techniques, and a volunteer for girl-child education with Pumpkin Seeds.</p>
+        <h3>Education &amp; learning</h3>
+        <ul class="edu-list">
+          <li><b>Product Management Program</b> — AirTribe · May 2026 – present</li>
+          <li><b>Bachelor of Education (B.Ed.)</b> — Mahatma Gandhi Kashi Vidyapeeth · 2019 – 2021</li>
+          <li><b>Master's Degree in Commerce</b> — Dr. C. V. Raman University, Bilaspur · 2017 – 2019</li>
+          <li><b>Bachelor of Commerce (B.Com.)</b> — Jai Narain Vyas University · 2014 – 2017</li>
+        </ul>
+        <p style="margin-top:10px">Also certified in effective online teaching techniques, and a volunteer for girl-child education with Pumpkin Seeds.</p>
       </div>
     </div>
   </section>
@@ -611,6 +788,8 @@
       <div class="contact-links">
         <a class="btn btn-primary" href="mailto:ankitaroo@gmail.com">ankitaroo@gmail.com</a>
         <a class="btn btn-ghost" href="tel:+919602339707">+91 96023 39707</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/ankita-choudhary-477442252/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-ghost" href="docs/Ankita_Choudhary_Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
       </div>
     </div>
   </section>
