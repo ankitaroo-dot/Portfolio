@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ankita Choudhary — Product Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#17121F;
+    --bg2:#1E1729;
+    --card:rgba(255,255,255,0.045);
+    --card-border:rgba(255,255,255,0.09);
+    --violet:#9B7BFF;
+    --violet-deep:#6C4AE2;
+    --gold:#FFC24B;
+    --text:#EDE9F6;
+    --muted:#9A93AC;
+    --radius:18px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Sora',sans-serif;
+    font-weight:300;
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--violet-deep);color:#fff}
+  a{color:var(--violet)}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+
+  /* ambient orbs */
+  .orb{position:fixed;border-radius:50%;filter:blur(120px);opacity:.35;pointer-events:none;z-index:0}
+  .orb1{width:520px;height:520px;background:#4A2FA8;top:-160px;right:-120px}
+  .orb2{width:420px;height:420px;background:#8A4B1F;bottom:-180px;left:-140px;opacity:.22}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+
+  /* nav */
+  nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(14px);
+    background:rgba(23,18,31,0.75);
+    border-bottom:1px solid var(--card-border);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1080px;margin:0 auto}
+  .logo{font-family:'Fraunces',serif;font-weight:700;font-size:1.15rem;color:var(--text);text-decoration:none}
+  .logo span{color:var(--gold)}
+  .nav-links{display:flex;gap:26px;list-style:none}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:400;transition:color .2s}
+  .nav-links a:hover{color:var(--text)}
+  @media(max-width:720px){.nav-links{display:none}}
+
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--gold);font-weight:500;
+  }
+
+  /* hero */
+  header{padding:110px 0 90px;text-align:left}
+  h1{
+    font-family:'Fraunces',serif;font-weight:600;
+    font-size:clamp(2.4rem,5.6vw,4.2rem);
+    line-height:1.08;margin:20px 0 26px;letter-spacing:-.01em;
+  }
+  h1 em{font-style:italic;color:var(--violet)}
+  .hero-sub{max-width:620px;color:var(--muted);font-size:1.05rem;margin-bottom:38px}
+  .hero-sub strong{color:var(--text);font-weight:500}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    display:inline-block;padding:13px 26px;border-radius:999px;text-decoration:none;
+    font-weight:500;font-size:.92rem;transition:transform .18s,box-shadow .18s;
+  }
+  .btn-primary{background:linear-gradient(120deg,var(--violet-deep),var(--violet));color:#fff;box-shadow:0 6px 26px rgba(108,74,226,.4)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(108,74,226,.55)}
+  .btn-ghost{border:1px solid var(--card-border);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--violet);transform:translateY(-2px)}
+
+  /* stat strip */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:0 0 100px}
+  @media(max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat{
+    background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);
+    padding:22px 20px;
+  }
+  .stat b{font-family:'Fraunces',serif;font-size:1.9rem;font-weight:600;display:block;color:var(--text)}
+  .stat span{font-size:.78rem;color:var(--muted)}
+
+  section{padding:0 0 110px}
+  h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.7rem,3.4vw,2.4rem);margin:14px 0 14px;letter-spacing:-.01em}
+  .section-intro{color:var(--muted);max-width:640px;margin-bottom:44px}
+
+  /* skills */
+  .skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media(max-width:720px){.skill-grid{grid-template-columns:1fr}}
+  .skill-card{
+    background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);
+    padding:26px;transition:transform .2s,border-color .2s;
+  }
+  .skill-card:hover{transform:translateY(-4px);border-color:rgba(155,123,255,.45)}
+  .skill-card h3{font-family:'Sora',sans-serif;font-weight:600;font-size:1rem;margin:10px 0 8px}
+  .skill-card p{color:var(--muted);font-size:.88rem}
+  .chiprow{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .chip{
+    font-family:'JetBrains Mono',monospace;font-size:.68rem;padding:5px 11px;border-radius:999px;
+    border:1px solid var(--card-border);color:var(--text);background:rgba(255,255,255,.03)
+  }
+  .glyph{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,rgba(108,74,226,.35),rgba(255,194,75,.18));font-size:1.05rem}
+
+  /* RICE sandbox */
+  .sandbox{
+    background:linear-gradient(160deg,rgba(108,74,226,.14),rgba(255,255,255,.03));
+    border:1px solid rgba(155,123,255,.3);border-radius:24px;padding:36px;
+  }
+  @media(max-width:720px){.sandbox{padding:24px}}
+  .sandbox-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:36px;align-items:start}
+  @media(max-width:860px){.sandbox-grid{grid-template-columns:1fr}}
+  .slider-row{margin-bottom:22px}
+  .slider-row label{display:flex;justify-content:space-between;font-size:.85rem;font-weight:500;margin-bottom:8px}
+  .slider-row label output{font-family:'JetBrains Mono',monospace;color:var(--gold)}
+  input[type=range]{
+    width:100%;-webkit-appearance:none;appearance:none;height:5px;border-radius:99px;
+    background:rgba(255,255,255,.12);outline:none;
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:50%;
+    background:var(--violet);border:3px solid #fff;cursor:pointer;box-shadow:0 2px 10px rgba(108,74,226,.6)
+  }
+  input[type=range]::-moz-range-thumb{
+    width:14px;height:14px;border-radius:50%;background:var(--violet);border:3px solid #fff;cursor:pointer
+  }
+  .rice-score{
+    text-align:center;background:rgba(23,18,31,.6);border:1px solid var(--card-border);
+    border-radius:18px;padding:26px;margin-bottom:20px;
+  }
+  .rice-score b{font-family:'Fraunces',serif;font-size:3.4rem;font-weight:700;color:var(--gold);display:block;line-height:1}
+  .rice-score span{font-size:.75rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;font-family:'JetBrains Mono',monospace}
+  .verdict{font-size:.9rem;margin-top:10px;color:var(--text)}
+  table{width:100%;border-collapse:collapse;font-size:.82rem}
+  th{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px;border-bottom:1px solid var(--card-border)}
+  td{padding:9px 10px;border-bottom:1px solid rgba(255,255,255,.05)}
+  tr.you td{color:var(--gold);font-weight:500}
+  .score-cell{font-family:'JetBrains Mono',monospace}
+
+  /* roadmap */
+  .roadmap{position:relative;margin-top:8px}
+  .roadmap::before{
+    content:"";position:absolute;left:11px;top:6px;bottom:6px;width:2px;
+    background:linear-gradient(var(--violet-deep),var(--gold));border-radius:2px;
+  }
+  .release{position:relative;padding:0 0 40px 48px}
+  .release:last-child{padding-bottom:0}
+  .release::before{
+    content:"";position:absolute;left:3px;top:6px;width:18px;height:18px;border-radius:50%;
+    background:var(--bg);border:3px solid var(--violet);
+  }
+  .release.current::before{border-color:var(--gold);box-shadow:0 0 0 6px rgba(255,194,75,.15)}
+  .vtag{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--gold);letter-spacing:.1em}
+  .release h3{font-family:'Sora',sans-serif;font-weight:600;font-size:1.05rem;margin:4px 0 2px}
+  .release .org{font-size:.82rem;color:var(--violet);margin-bottom:8px}
+  .release p{color:var(--muted);font-size:.88rem;max-width:640px}
+  .release ul{margin:10px 0 0 18px;color:var(--muted);font-size:.88rem}
+  .release li{margin-bottom:5px}
+  .release li b{color:var(--text);font-weight:500}
+
+  /* airtribe callout */
+  .callout{
+    display:flex;gap:22px;align-items:flex-start;
+    background:linear-gradient(120deg,rgba(255,194,75,.1),rgba(108,74,226,.12));
+    border:1px solid rgba(255,194,75,.3);border-radius:var(--radius);padding:28px;
+  }
+  .callout .glyph{flex-shrink:0;width:46px;height:46px;font-size:1.3rem}
+  .callout h3{font-weight:600;font-size:1.05rem;margin-bottom:6px}
+  .callout p{color:var(--muted);font-size:.9rem}
+
+  /* contact */
+  .contact-card{
+    text-align:center;background:var(--card);border:1px solid var(--card-border);
+    border-radius:24px;padding:60px 30px;
+  }
+  .contact-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+  footer{padding:34px 0 44px;text-align:center;color:var(--muted);font-size:.78rem}
+  footer .heart{color:var(--gold)}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* project case studies */
+  .case-grid{display:flex;flex-direction:column;gap:16px}
+  .case{
+    background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);
+    overflow:hidden;transition:border-color .2s;
+  }
+  .case[open]{border-color:rgba(155,123,255,.4)}
+  .case summary{
+    list-style:none;cursor:pointer;padding:22px 24px;display:flex;align-items:center;gap:18px;
+  }
+  .case summary::-webkit-details-marker{display:none}
+  .case-tag{
+    font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--gold);border:1px solid rgba(255,194,75,.35);border-radius:999px;padding:4px 10px;flex-shrink:0;
+    white-space:nowrap;
+  }
+  .case-head{flex:1;min-width:0}
+  .case-head h3{font-family:'Sora',sans-serif;font-weight:600;font-size:1.05rem;margin-bottom:3px}
+  .case-head p{color:var(--muted);font-size:.85rem}
+  .case-plus{
+    width:30px;height:30px;border-radius:50%;border:1px solid var(--card-border);flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;position:relative;transition:transform .25s,border-color .25s;
+  }
+  .case[open] .case-plus{transform:rotate(45deg);border-color:var(--violet)}
+  .case-plus::before,.case-plus::after{content:"";position:absolute;background:var(--text)}
+  .case-plus::before{width:11px;height:1.5px}
+  .case-plus::after{width:1.5px;height:11px}
+  .case-body{padding:0 24px 28px 24px}
+  .case-divider{height:1px;background:var(--card-border);margin-bottom:20px}
+  .case-cols{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:20px}
+  @media(max-width:640px){.case-cols{grid-template-columns:1fr}}
+  .case-block b{
+    display:block;font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--violet);margin-bottom:8px;font-weight:500;
+  }
+  .case-block p, .case-block li{color:var(--muted);font-size:.87rem}
+  .case-block ul{margin-left:16px;margin-top:4px}
+  .case-block li{margin-bottom:4px}
+  .case-metrics{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+  .metric-pill{
+    background:rgba(155,123,255,.1);border:1px solid rgba(155,123,255,.25);border-radius:10px;
+    padding:8px 14px;font-size:.78rem;color:var(--text);
+  }
+  .case-live{
+    display:inline-flex;align-items:center;gap:8px;margin-top:4px;font-size:.85rem;font-weight:500;
+    color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(255,194,75,.4);padding-bottom:2px;
+  }
+  .case-live:hover{color:#fff}
+  .cta-links{display:flex;flex-wrap:wrap;gap:22px}
+  @media(max-width:640px){
+    .case summary{display:grid;grid-template-columns:1fr auto;gap:12px;padding:20px}
+    .case-tag{justify-self:start}
+    .case-head{grid-column:1 / -1;grid-row:2}
+    .case-body{padding:0 20px 24px}
+  }
+  .edu-list{list-style:none;margin-top:10px}
+  .edu-list li{color:var(--muted);font-size:.88rem;margin-bottom:4px}
+  .edu-list b{color:var(--text);font-weight:500}
+</style>
+</head>
+<body>
+<div class="orb orb1" aria-hidden="true"></div>
+<div class="orb orb2" aria-hidden="true"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#top">ankita<span>.pm</span></a>
+    <ul class="nav-links">
+      <li><a href="#how">How I work</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#sandbox">RICE sandbox</a></li>
+      <li><a href="#roadmap">Career roadmap</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
+
+  <header>
+    <p class="eyebrow">Associate Product Manager · Product Owner · Bidar, Karnataka, IN</p>
+    <h1>Products ship when someone owns <em>the whole story.</em></h1>
+    <p class="hero-sub">
+      I'm <strong>Ankita Choudhary</strong> — a product manager who has been the product owner, the analyst,
+      the QA lead, the support desk, and the teacher explaining it all in plain words.
+      In young companies, I've learned that <strong>versatility isn't a detour from product — it is product.</strong>
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#projects">See my projects</a>
+      <a class="btn btn-ghost" href="docs/Ankita_Choudhary_Resume.pdf" target="_blank" rel="noopener">Download resume</a>
+      <a class="btn btn-ghost" href="#sandbox">Try my RICE sandbox</a>
+    </div>
+  </header>
+
+  <div class="stats reveal">
+    <div class="stat"><b>7+</b><span>years of professional experience</span></div>
+    <div class="stat"><b>5</b><span>hats worn at one startup — PO, QA, scrum, support, marketing</span></div>
+    <div class="stat"><b>2</b><span>live products shipped · OutLoud &amp; Our House Ledger</span></div>
+    <div class="stat"><b>1</b><span>PM program in progress · AirTribe</span></div>
+  </div>
+
+  <section id="how" class="reveal">
+    <p class="eyebrow">How I work</p>
+    <h2>Four muscles, one job.</h2>
+    <p class="section-intro">Everything I've done — classrooms, data desks, sprint boards — feeds one of these four muscles a PM needs every day.</p>
+    <div class="skill-grid">
+      <div class="skill-card">
+        <div class="glyph">🔍</div>
+        <h3>Discover</h3>
+        <p>Talking to users, reading the market, and turning fuzzy needs into problems worth solving.</p>
+        <div class="chiprow"><span class="chip">User research</span><span class="chip">Competitive analysis</span><span class="chip">Requirements gathering</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="glyph">🧭</div>
+        <h3>Decide</h3>
+        <p>Vision, roadmap, and a ruthlessly prioritized backlog — items estimated, refined, and ready.</p>
+        <div class="chiprow"><span class="chip">Roadmapping</span><span class="chip">Backlog prioritization</span><span class="chip">User stories & AC</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="glyph">🚀</div>
+        <h3>Deliver</h3>
+        <p>Sprint planning, demos, and accepting work against acceptance criteria so quality never slips.</p>
+        <div class="chiprow"><span class="chip">Agile & Scrum</span><span class="chip">Sprint planning</span><span class="chip">QA coordination</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="glyph">📊</div>
+        <h3>Measure</h3>
+        <p>An analyst's habit of letting the data argue — metrics, user analytics, and honest reporting to leadership.</p>
+        <div class="chiprow"><span class="chip">Data analysis</span><span class="chip">Metrics & reporting</span><span class="chip">Stakeholder comms</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="reveal">
+    <p class="eyebrow">Projects</p>
+    <h2>Nine problems, nine artifacts.</h2>
+    <p class="section-intro">Two shipped products and seven case studies from AirTribe's Product Management program. Tap any card to open the summary, or read the full write-up.</p>
+
+    <div class="case-grid">
+
+      <details class="case" open>
+        <summary>
+          <span class="case-tag">Shipped · Capstone</span>
+          <span class="case-head">
+            <h3>OutLoud — AI English-Speaking Practice</h3>
+            <p>Five minutes of speaking practice on your phone, with nobody listening but you</p>
+          </span>
+          <span class="case-plus" aria-hidden="true"></span>
+        </summary>
+        <div class="case-body">
+          <div class="case-divider"></div>
+          <div class="case-cols">
+            <div class="case-block">
+              <b>Problem</b>
+              <p>College students who read and write English fluently freeze when they have to speak it in presentations, vivas and interviews. Every place to practise has a person in it who might judge them, so they script, skip hard words, get caught, and withdraw.</p>
+            </div>
+            <div class="case-block">
+              <b>Research</b>
+              <p>6 user interviews (5 in segment) and a day-0 baseline: comfort speaking to a stranger averaged <strong style="color:var(--text);font-weight:500">1.6 / 5</strong>. Key insight: the fear is of the witness, not the language. Nobody asked for better teaching; they asked for privacy.</p>
+            </div>
+          </div>
+          <div class="case-cols">
+            <div class="case-block">
+              <b>What I built</b>
+              <p>A 5-step loop: prompt card → 15s to think → 60s unscripted speech → AI coaching (one strength, one suggestion, one rewrite) → unlimited retakes that leave no trace. No score, no login, no audience.</p>
+            </div>
+            <div class="case-block">
+              <b>Hardest trade-off</b>
+              <p>Showing no score at all. It protects nervous users, but removes the most legible form of progress. v2 plans an opt-in score unlocked after session three.</p>
+            </div>
+          </div>
+          <div class="case-block" style="margin-bottom:16px">
+            <b>Early signals</b>
+            <div class="case-metrics">
+              <span class="metric-pill">Market leader: 70% monthly paid churn</span>
+              <span class="metric-pill">71% opened a cold link</span>
+              <span class="metric-pill">1 unprompted return session</span>
+              <span class="metric-pill">North Star: Week-4 practice completion</span>
+            </div>
+          </div>
+          <div class="cta-links">
+            <a class="case-live" href="https://instant-capture-show.lovable.app" target="_blank" rel="noopener">Try the live app →</a>
+            <a class="case-live" href="docs/OutLoud_Capstone.pdf" target="_blank" rel="noopener">Read the capstone deck (PDF) →</a>
+          </div>
+        </div>
+      </details>
+
+      <details class="case">
+        <summary>
+          <span class="case-tag">Growth strategy</span>
+          <span class="case-head">
+            <h3>Airbnb India — Growth Loops for a Low-Take-Rate Market</h3>
+            <p>PLG initiatives, growth loops, four MVP prototypes and a revenue model built for India</p>
+          </span>
+          <span class="case-plus" aria-hidden="true"></span>
+        </summary>
+        <div class="case-body">
+          <div class="case-divider"></div>
+          <div class="case-cols">
+            <div class="case-block">
+              <b>Diagnosis</b>
+              <p>Four constraints bind Airbnb India: <strong style="color:var(--text);font-weight:500">trust</strong> (listing ≠ reality), <strong style="color:var(--text);font-weight:500">frequency</strong> (1–2 trips a year), thin leaky <strong style="color:var(--text);font-weight:500">supply</strong>, and a 15.5% <strong style="color:var(--text);font-weight:500">take rate</strong> on a ₹4,000 room night. I audited what Airbnb already ships before proposing anything.</p>
+            </div>
+            <div class="case-block">
+              <b>Five moves</b>
+              <ul>
+                <li>Product-led ops (AI listing copilot, WhatsApp self-serve support)</li>
+                <li>Proof of Stay: verified guest photos in reviews</li>
+                <li>Trust Score with real benefits for good guests</li>
+                <li>Split &amp; Invite: group bookings settled over UPI</li>
+                <li>Monetise the trip, not the room night</li>
+              </ul>
+            </div>
+          </div>
+          <div class="case-block" style="margin-bottom:16px">
+            <b>Headline results</b>
+            <div class="case-metrics">
+              <span class="metric-pill">North Star: verified trips per active traveller per year</span>
+              <span class="metric-pill">Take rate 15.5% → 13%, contribution/booking +~10%</span>
+              <span class="metric-pill">4 MVPs in one clickable prototype</span>
+              <span class="metric-pill">RICE-ranked roadmap with kill criteria</span>
+            </div>
+          </div>
+          <a class="case-live" href="docs/Airbnb_India_Growth_Strategy.pdf" target="_blank" rel="noopener">Read the full strategy (PDF) →</a>
+        </div>
+      </details>
+
+      <details class="case">
+        <summary>
+          <span class="case-tag">Analytics</span>
+          <span class="case-head">
+            <h3>Zomato — Funnel, Cohort &amp; North Star Analysis</h3>
+            <p>Where Tier-1 users give up between opening the app and getting their food</p>
+          </span>
+          <span class="case-plus" aria-hidden="true"></span>
+        </summary>
+        <div class="case-body">
+          <div class="case-divider"></div>
+          <div class="case-cols">
+            <div class="case-block">
+              <b>Funnel finding</b>
+              <p>Of 1,000 app opens, 837 users are lost, and <strong style="color:var(--text);font-weight:500">700 leave in the first three steps</strong>, before they ever see a price. The real problem isn't checkout; it's a hungry user who can't decide what to eat.</p>
+            </div>
+            <div class="case-block">
+              <b>Cohort finding</b>
+              <p>Across 6 cohorts, discount-only users almost all leave within a year (11 of 100 remain vs 58 for full-price users), and new users drop fastest, so the first three orders matter most.</p>
+            </div>
+          </div>
+          <div class="case-block" style="margin-bottom:16px">
+            <b>Metrics &amp; plan</b>
+            <div class="case-metrics">
+              <span class="metric-pill">North Star: monthly repeat delivered orders</span>
+              <span class="metric-pill">Metric ladder for 13 hypotheses</span>
+              <span class="metric-pill">12-month plan: 170 → ~206 orders per 1,000 opens (+21%)</span>
+            </div>
+            <p style="color:var(--muted);font-size:.78rem;margin-top:10px">Figures are illustrative examples built to show the method, not real Zomato data.</p>
+          </div>
+          <a class="case-live" href="docs/Zomato_Funnel_Cohort_Analysis.pdf" target="_blank" rel="noopener">Read the full analysis (PDF) →</a>
+        </div>
+      </details>
+
+      <details class="case">
+        <summary>
+          <span class="case-tag">PRD · System design</span>
+          <span class="case-head">
+            <h3>PathFinder — Personalised Learning Recommendations</h3>
+            <p>Guide learners to the right course, at the right level, in the right order</p>
+          </span>
+          <span class="case-plus" aria-hidden="true"></span>
+        </summary>
+        <div class="case-body">
+          <div class="case-divider"></div>
+          <div class="case-cols">
+            <div class="case-block">
+              <b>Problem</b>
+              <p>Thousands of courses, but learners don't know which to pick, so they choose badly, get bored or stuck, and quit. The platform should guide them, not make them search.</p>
+            </div>
+            <div class="case-block">
+              <b>What the PRD covers</b>
+              <ul>
+                <li>User stories for learners, instructors and admins</li>
+                <li>10 prioritised functional requirements</li>
+                <li>Anti-cheat rewards system (points, weekly streaks, tiers)</li>
+                <li>Non-functional requirements and system architecture</li>
+              </ul>
+            </div>
+          </div>
+          <div class="case-block" style="margin-bottom:16px">
+            <b>Targets</b>
+            <div class="case-metrics">
+              <span class="metric-pill">Engagement +25%</span>
+              <span class="metric-pill">Course completions +30%</span>
+              <span class="metric-pill">Home feed &lt; 0.3s · 99.9% uptime</span>
+              <span class="metric-pill">GDPR &amp; DPDP compliant</span>
+            </div>
+          </div>
+          <a class="case-live" href="docs/PathFinder_PRD.pdf" target="_blank" rel="noopener">Read the full PRD (PDF) →</a>
+        </div>
+      </details>
+
+      <details class="case">
+        <summary>
+          <span class="case-tag">Shipped product</span>
+          <span class="case-head">
+            <h3>Our House Ledger</h3>
+            <p>A live web app for couples to track shared daily expenses together</p>
+          </span>
+          <span class="case-plus" aria-hidden="true"></span>
+        </summary>
+        <div class="case-body">
+          <div class="case-divider"></div>
+          <div class="case-cols">
+            <div class="case-block">
+              <b>Problem</b>
+              <p>Couples splitting daily household costs usually fall back on scattered notes apps or awkward "who paid last" memory — nothing built for two people to log spending together in one shared place.</p>
+            </div>
+            <div class="case-block">
+              <b>What I built</b>
+              <p>A shared ledger where both partners log expenses, see a running shared history, and can comment on individual entries — designed and shipped end to end, not just specced.</p>
+            </div>
+          </div>
+          <div class="case-block" style="margin-bottom:6px">
+            <b>Why it matters on a PM resume</b>
+            <p>Everything else here is a case study; this is a live URL. It's proof I can take a product from idea to something a real user can open in a browser today.</p>
+          </div>
+          <a class="case-live" href="https://house-ledger-mocha.vercel.app/" target="_blank" rel="noopener">Visit the live app →</a>
+        </div>
+      </details>
+
+      <details class="case">
+        <summary>
+          <span class="case-tag">PRD</span>
+          <span class="case-head">
+            <h3>StreakSquad — VitaFit Retention System</h3>
+            <p>A gamification + community-challenges PRD to fix Day-14 churn</p>
+          </span>
+          <span class="case-plus" aria-hidden="true"></span>
+        </summary>
+        <div class="case-body">
+          <div class="case-divider"></div>
+          <div class="case-cols">
+            <div class="case-block">
+              <b>Problem</b>
+              <p>VitaFit loses users in their first 14 days — the exact window habits form. Root causes: no visible reward for showing up, and solo, anonymous sessions with zero social accountability.</p>
+            </div>
+            <div class="case-block">
+              <b>Approach</b>
+              <p>Designed two systems around one shared trigger — completing a session feeds a personal rewards engine (points, streaks, tiers) and a social challenge engine (squads, leaderboards) at the same time.</p>
+            </div>
+          </div>
+          <div class="case-block" style="margin-bottom:16px">
+            <b>Rollout plan</b>
+            <p>Five phases: discovery &amp; analytics validation → clickable Figma prototype &amp; usability testing → MVP build → randomized A/B test on Day-14 retention → gated full rollout.</p>
+          </div>
+          <div class="case-block">
+            <b>Target outcomes</b>
+            <div class="case-metrics">
+              <span class="metric-pill">Day-14 retention: +10–15 pts</span>
+              <span class="metric-pill">Sessions/user/week: 2 → 4</span>
+              <span class="metric-pill">Guardrail: no rise in burnout complaints</span>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="case">
+        <summary>
+          <span class="case-tag">User research</span>
+          <span class="case-head">
+            <h3>Uber — Find My Ride</h3>
+            <p>Diagnosing why pickups fail in malls, campuses, and stations</p>
+          </span>
+          <span class="case-plus" aria-hidden="true"></span>
+        </summary>
+        <div class="case-body">
+          <div class="case-divider"></div>
+          <div class="case-cols">
+            <div class="case-block">
+              <b>Research goal</b>
+              <p>Understand root causes of rider-driver pickup friction, where it happens most, and its impact on wait times and cancellations — before proposing any fix.</p>
+            </div>
+            <div class="case-block">
+              <b>Method</b>
+              <p>Structured rider interviews walking through the full booking-to-pickup journey, probing confidence, confusion points, and how issues actually got resolved.</p>
+            </div>
+          </div>
+          <div class="case-block" style="margin-bottom:16px">
+            <b>Key finding</b>
+            <p>The core problem isn't booking — it's pickup coordination in complex venues, where a map pin alone isn't enough and riders/drivers default to phone calls to find each other.</p>
+          </div>
+          <div class="case-block">
+            <b>Recommendations shipped in the write-up</b>
+            <ul>
+              <li>Smart pickup-point recommendation using venue access data, not just GPS</li>
+              <li>Landmark-based pickup guidance (gates, entrances, stores)</li>
+              <li>Priority driver-matching for historically high-friction locations</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+
+      <details class="case">
+        <summary>
+          <span class="case-tag">UX audit</span>
+          <span class="case-head">
+            <h3>Nykaa — Purchase Journey Evaluation</h3>
+            <p>An end-to-end usability walkthrough of buying a dry shampoo</p>
+          </span>
+          <span class="case-plus" aria-hidden="true"></span>
+        </summary>
+        <div class="case-body">
+          <div class="case-divider"></div>
+          <div class="case-cols">
+            <div class="case-block">
+              <b>Method</b>
+              <p>Walked the full journey — search, filter, browse, product detail, checkout — logging what felt smooth, confusing, slow, or frustrating at each step, then validated against real user conversations.</p>
+            </div>
+            <div class="case-block">
+              <b>Key finding</b>
+              <p>Discovery wasn't the problem — <em>comparison</em> was. Users spent more time and hesitation distinguishing near-identical products than finding them in the first place.</p>
+            </div>
+          </div>
+          <div class="case-block">
+            <b>Recommendations</b>
+            <ul>
+              <li>Side-by-side comparison feature for similar products</li>
+              <li>A prominent "Best For [hair type]" badge on listings</li>
+              <li>Auto-apply the best available coupon instead of showing dozens</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+
+      <details class="case">
+        <summary>
+          <span class="case-tag">Product strategy</span>
+          <span class="case-head">
+            <h3>Corporate Learning Platform</h3>
+            <p>A 3-year land-and-expand strategy for a B2B SaaS onboarding product</p>
+          </span>
+          <span class="case-plus" aria-hidden="true"></span>
+        </summary>
+        <div class="case-body">
+          <div class="case-divider"></div>
+          <div class="case-cols">
+            <div class="case-block">
+              <b>Core problem</b>
+              <p>VC-backed startups (50–500 employees) hire fast but onboard inconsistently — training is scattered across docs, videos, and manager memory, slowing time-to-productivity.</p>
+            </div>
+            <div class="case-block">
+              <b>Strategic bet</b>
+              <p>Don't compete with enterprise LMS on content libraries. Land narrowly on onboarding, then expand into team training, continuous learning, and workforce capability management.</p>
+            </div>
+          </div>
+          <div class="case-block">
+            <b>Defensibility built into the plan</b>
+            <div class="case-metrics">
+              <span class="metric-pill">Data moat</span>
+              <span class="metric-pill">HRIS/Slack/Teams integrations</span>
+              <span class="metric-pill">Network effects across HR + managers</span>
+              <span class="metric-pill">Rising switching costs</span>
+            </div>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <section id="sandbox" class="reveal">
+    <p class="eyebrow">Interactive · The signature</p>
+    <h2>The RICE prioritization sandbox.</h2>
+    <p class="section-intro">Prioritization is the PM's sharpest knife. Move the sliders to score a feature the way I score a backlog — then see where it lands against a sample backlog.</p>
+    <div class="sandbox">
+      <div class="sandbox-grid">
+        <div>
+          <div class="slider-row">
+            <label for="reach">Reach <small style="color:var(--muted);font-weight:300">(users / quarter)</small> <output id="reachOut">2000</output></label>
+            <input type="range" id="reach" min="100" max="10000" step="100" value="2000">
+          </div>
+          <div class="slider-row">
+            <label for="impact">Impact <small style="color:var(--muted);font-weight:300">(0.25 – 3)</small> <output id="impactOut">1.0</output></label>
+            <input type="range" id="impact" min="0.25" max="3" step="0.25" value="1">
+          </div>
+          <div class="slider-row">
+            <label for="conf">Confidence <small style="color:var(--muted);font-weight:300">(%)</small> <output id="confOut">80%</output></label>
+            <input type="range" id="conf" min="10" max="100" step="5" value="80">
+          </div>
+          <div class="slider-row">
+            <label for="effort">Effort <small style="color:var(--muted);font-weight:300">(person-months)</small> <output id="effortOut">2</output></label>
+            <input type="range" id="effort" min="0.5" max="12" step="0.5" value="2">
+          </div>
+        </div>
+        <div>
+          <div class="rice-score">
+            <span>RICE score</span>
+            <b id="score">800</b>
+            <p class="verdict" id="verdict">Solid bet — schedule it in the next sprint or two.</p>
+          </div>
+          <table aria-label="Sample backlog ranked by RICE score">
+            <thead><tr><th>Backlog item</th><th>RICE</th></tr></thead>
+            <tbody id="backlog"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="roadmap" class="reveal">
+    <p class="eyebrow">Career roadmap</p>
+    <h2>Shipped in versions.</h2>
+    <p class="section-intro">Every release added a capability the next one needed. The changelog, in order:</p>
+    <div class="roadmap">
+      <div class="release">
+        <span class="vtag">v1.0 — ANALYST · JUL 2015 – NOV 2015</span>
+        <h3>Data Analyst</h3>
+        <p class="org">Centre for Monitoring Indian Economy (CMIE), Jodhpur</p>
+        <ul>
+          <li>Extracted and interpreted data patterns into <b>actionable outcomes</b> for the Roadways Department.</li>
+          <li>Partnered with business-unit leaders to identify and prioritize problems.</li>
+        </ul>
+      </div>
+      <div class="release">
+        <span class="vtag">v2.0 — OPERATIONS · JUL 2016 – OCT 2018</span>
+        <h3>Account Manager | Administrative Office Specialist</h3>
+        <p class="org">Neerja Modi School, Jodhpur</p>
+        <ul>
+          <li>Ran school-wide events (Annual Day, Sports Day) end to end — <b>stakeholder management before I knew the term</b>.</li>
+          <li>Caught and resolved account discrepancies under hard deadlines; maintained the school's MIS records.</li>
+        </ul>
+      </div>
+      <div class="release">
+        <span class="vtag">v3.0 — EDUCATOR · JUL 2018 – JUL 2022</span>
+        <h3>Teacher</h3>
+        <p class="org">Lucky Bal Niketan Sr. Sec. School, Jodhpur &amp; St. Paul's Sr. Sec. School, Barmer</p>
+        <ul>
+          <li><b>Authored a Grammar Book for Classes 1–5</b>, adopted as course material — my first shipped product.</li>
+          <li>Students from my curriculum <b>topped the district in CBSE boards</b>.</li>
+          <li>Moved entire classrooms online during COVID — my first zero-to-one migration.</li>
+        </ul>
+      </div>
+      <div class="release">
+        <span class="vtag">v4.0 — PRODUCT OWNER · SEP 2022 – AUG 2023</span>
+        <h3>Product Owner &amp; Product Consultant</h3>
+        <p class="org">Tongadive · Remote</p>
+        <ul>
+          <li>Owned <b>vision, strategy, and roadmap</b>; translated stakeholder needs into user stories with clear acceptance criteria.</li>
+          <li>Ran sprint planning and demos; <b>accepted or rejected work against acceptance criteria</b>.</li>
+          <li>Also led QA, scrum, customer support &amp; marketing; represented the company at <b>CPHI</b> and on customer site visits.</li>
+        </ul>
+      </div>
+      <div class="release">
+        <span class="vtag">v5.0 — BUSINESS MANAGER · JUN 2024 – MAY 2025</span>
+        <h3>Business Manager</h3>
+        <p class="org">DeMeNew Tech Pvt. Ltd. · Hyderabad (Remote)</p>
+        <ul>
+          <li>Led cross-functional teams to <b>quarterly business goals</b>; tracked metrics and presented insights to leadership.</li>
+          <li>Improved client retention through personalized service and effective escalation handling.</li>
+        </ul>
+      </div>
+      <div class="release current">
+        <span class="vtag">v6.0 — IN DEVELOPMENT · MAY 2026 →</span>
+        <h3>Product Manager</h3>
+        <p class="org">AirTribe Product Management Program</p>
+        <p>Nine product projects so far, including a shipped AI capstone. Expected release: <b style="color:var(--gold)">Nov 2026</b>. Roadmap item: your product team.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="callout">
+      <div class="glyph">🎓</div>
+      <div>
+        <h3>Education &amp; learning</h3>
+        <ul class="edu-list">
+          <li><b>Product Management Program</b> — AirTribe · May 2026 – present</li>
+          <li><b>Bachelor of Education (B.Ed.)</b> — Mahatma Gandhi Kashi Vidyapeeth · 2019 – 2021</li>
+          <li><b>Master's Degree in Commerce</b> — Dr. C. V. Raman University, Bilaspur · 2017 – 2019</li>
+          <li><b>Bachelor of Commerce (B.Com.)</b> — Jai Narain Vyas University · 2014 – 2017</li>
+        </ul>
+        <p style="margin-top:10px">Also certified in effective online teaching techniques, and a volunteer for girl-child education with Pumpkin Seeds.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="reveal">
+    <div class="contact-card">
+      <p class="eyebrow">Contact</p>
+      <h2>Let's build something users love.</h2>
+      <p class="section-intro" style="margin:0 auto">Open to Product Manager and Product Owner roles — remote or hybrid.</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:ankitaroo@gmail.com">ankitaroo@gmail.com</a>
+        <a class="btn btn-ghost" href="tel:+919602339707">+91 96023 39707</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/ankita-choudhary-477442252/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-ghost" href="docs/Ankita_Choudhary_Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Designed as a product: discovered, prioritized, shipped. <span class="heart">◆</span> Ankita Choudhary · 2026
+  </footer>
+</div>
+
+<script>
+  // RICE calculator
+  const reach = document.getElementById('reach');
+  const impact = document.getElementById('impact');
+  const conf = document.getElementById('conf');
+  const effort = document.getElementById('effort');
+  const scoreEl = document.getElementById('score');
+  const verdictEl = document.getElementById('verdict');
+  const backlogEl = document.getElementById('backlog');
+
+  const samples = [
+    {name:'Fix checkout drop-off on mobile', score:1450},
+    {name:'Self-serve onboarding flow', score:920},
+    {name:'Dark mode', score:310},
+    {name:'Export to CSV', score:180},
+    {name:'Rebuild settings page', score:95},
+  ];
+
+  function verdict(s){
+    if (s >= 1200) return 'Drop everything — this is a top-of-backlog item.';
+    if (s >= 600)  return 'Solid bet — schedule it in the next sprint or two.';
+    if (s >= 200)  return 'Worth doing, but not before the big rocks.';
+    return 'Park it. Revisit when reach or confidence grows.';
+  }
+
+  function render(){
+    const r = +reach.value, i = +impact.value, c = +conf.value/100, e = +effort.value;
+    const s = Math.round((r * i * c) / e);
+    document.getElementById('reachOut').textContent = r.toLocaleString();
+    document.getElementById('impactOut').textContent = i.toFixed(2).replace(/\.?0+$/,'') ;
+    document.getElementById('confOut').textContent = conf.value + '%';
+    document.getElementById('effortOut').textContent = e;
+    scoreEl.textContent = s.toLocaleString();
+    verdictEl.textContent = verdict(s);
+
+    const rows = [...samples, {name:'✦ Your feature', score:s, you:true}]
+      .sort((a,b)=>b.score-a.score)
+      .map(x=>`<tr${x.you?' class="you"':''}><td>${x.name}</td><td class="score-cell">${x.score.toLocaleString()}</td></tr>`)
+      .join('');
+    backlogEl.innerHTML = rows;
+  }
+  [reach,impact,conf,effort].forEach(el=>el.addEventListener('input',render));
+  render();
+
+  // scroll reveals
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
+  },{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
